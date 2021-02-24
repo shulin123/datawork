@@ -1,0 +1,6 @@
+com\shujuelin\datawork\common\entity\BaseEntity.class
+com\shujuelin\datawork\common\entity\exception\DataWorkException.class
+com\shujuelin\datawork\common\entity\controller\BaseController.class
+com\shujuelin\datawork\common\entity\utils\R.class
+com\shujuelin\datawork\common\entity\utils\StatefulHttpClient.class
+com\shujuelin\datawork\common\entity\exception\ErrorCode.class

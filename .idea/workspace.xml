@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="abd5edca-9429-4c48-8134-25421553e5f1" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\maven\repository" />
+        <option name="mavenHome" value="D:/apache-maven-3.5.4" />
+        <option name="userSettingsFile" value="E:\maven\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1oL870ccBbA8THmigZ7be0L1sSV" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/datawork-overwirte/src/main/resources" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17338331" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.shujuelin.datawork.common.entity.utils" />
+      <recent name="com.shujuelin.datawork.common.entity.exception" />
+      <recent name="com.shujuelin.datawork.overwirte.service.impl" />
+      <recent name="com.shujuelin.datawork.overwirte.service" />
+      <recent name="com.shujuelin.datawork.overwirte.entity" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\gx\datawork\datawork-overwirte\src\main\resources" />
+      <recent name="F:\gx\datawork\datawork-overwirte\src\main\java\com\shujuelin\datawork\overwirte" />
+      <recent name="F:\gx\datawork\datawork-overwirte\src\main\java\com\shujuelin\datawork\overwirte\dao" />
+      <recent name="F:\gx\datawork\datawork-overwirte\src\main\java\com\shujuelin\datawork\overwirte\entity" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.DataworkOverwirteApplication">
+    <configuration name="DataworkOperatorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="datawork-operator" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shujuelin.datawork.operator.DataworkOperatorApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataworkOverwirteApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="datawork-overwirte" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shujuelin.datawork.overwirte.DataworkOverwirteApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="abd5edca-9429-4c48-8134-25421553e5f1" name="Default Changelist" comment="" />
+      <created>1613054338097</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613054338097</updated>
+      <workItem from="1613054341834" duration="7703000" />
+      <workItem from="1613138138717" duration="3756000" />
+      <workItem from="1613141929259" duration="5768000" />
+      <workItem from="1613181232864" duration="11460000" />
+      <workItem from="1613207083226" duration="1515000" />
+      <workItem from="1613209535129" duration="4586000" />
+      <workItem from="1613535922057" duration="5894000" />
+      <workItem from="1614001472525" duration="2965000" />
+      <workItem from="1614066515381" duration="48000" />
+      <workItem from="1614137256741" duration="1248000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="450" y="340" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1613102374468">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="450" y="340" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1613102374468" />
+    <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1613146373012">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1613146373012" />
+    <state width="1493" height="116" key="GridCell.Tab.0.bottom" timestamp="1613207014203">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="116" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1613207014203" />
+    <state width="1493" height="116" key="GridCell.Tab.0.center" timestamp="1613207014203">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="116" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1613207014203" />
+    <state width="1493" height="116" key="GridCell.Tab.0.left" timestamp="1613207014202">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="116" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1613207014202" />
+    <state width="1493" height="116" key="GridCell.Tab.0.right" timestamp="1613207014203">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="116" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1613207014203" />
+    <state width="1493" height="116" key="GridCell.Tab.1.bottom" timestamp="1613207014204">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="116" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1613207014204" />
+    <state width="1493" height="116" key="GridCell.Tab.1.center" timestamp="1613207014203">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="116" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1613207014203" />
+    <state width="1493" height="116" key="GridCell.Tab.1.left" timestamp="1613207014203">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="116" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1613207014203" />
+    <state width="1493" height="116" key="GridCell.Tab.1.right" timestamp="1613207014204">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="116" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1613207014204" />
+    <state width="1493" height="116" key="GridCell.Tab.2.bottom" timestamp="1613207014204">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="116" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1613207014204" />
+    <state width="1493" height="116" key="GridCell.Tab.2.center" timestamp="1613207014204">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="116" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1613207014204" />
+    <state width="1493" height="116" key="GridCell.Tab.2.left" timestamp="1613207014204">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="116" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1613207014204" />
+    <state width="1493" height="116" key="GridCell.Tab.2.right" timestamp="1613207014204">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="116" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1613207014204" />
+    <state x="299" y="70" key="Maven.ArtifactSearchDialog" timestamp="1613541067481">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="299" y="70" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1613541067481" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1613209082870">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1613209082870" />
+    <state x="178" y="116" key="new project wizard" timestamp="1613210141940">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="116" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1613210141940" />
+  </component>
+</project>
