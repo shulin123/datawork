@@ -2,6 +2,7 @@ package com.shujuelin.datawork.overwirte.schedule;
 
 import cn.hutool.core.date.DateUtil;
 import com.shujuelin.datawork.common.entity.utils.StatefulHttpClient;
+import com.shujuelin.datawork.overwirte.constant.constant;
 import com.shujuelin.datawork.overwirte.entity.HdfsSummaryEntity;
 import com.shujuelin.datawork.overwirte.entity.QueueMetricsEntity;
 import com.shujuelin.datawork.overwirte.entity.YarnSummaryEntity;
@@ -20,6 +21,7 @@ import java.util.*;
 /**
  * @author : shujuelin
  * @date : 18:02 2021/2/10
+ * 定时调度获取hadoop的监控信息
  */
 @Component
 public class HadoopJmxSchedule {
@@ -38,21 +40,14 @@ public class HadoopJmxSchedule {
     //通过StatefulHttpClient去访问hadoop的jmx的url
     private StatefulHttpClient client = new StatefulHttpClient(null);
 
-    public static final String JMXSERVERURLFORMAT = "http://%s/jmx?qry=%s";
-    public static final String NAMENODEINFO = "Hadoop:service=NameNode,name=NameNodeInfo";
-    public static final String FSNAMESYSTEM = "Hadoop:service=NameNode,name=FSNamesystem";
-    public static final String FSNAMESYSTEMSTATE = "Hadoop:service=NameNode,name=FSNamesystemState";
-    public static final String QUEUEMETRICS = "Hadoop:service=ResourceManager,name=QueueMetrics,q0=root";
-    public static final String CLUSTERMETRICS = "Hadoop:service=ResourceManager,name=ClusterMetrics";
-
-    public static final String QUEUEMETRICSALL = "Hadoop:service=ResourceManager,name=QueueMetrics,*";
-
     //获取active namenode uri
     private String getActiveNameNodeUri(List<String> nameNodeUri) throws IOException {
         String activeNameNodeUri = nameNodeUri.get(0);
+        //判断nameNodeUri是否多个
         if (nameNodeUri.size() > 1) {
             for (String uri : nameNodeUri) {
-                String fsNameSystemUrl = String.format(JMXSERVERURLFORMAT, uri, FSNAMESYSTEM);
+                //字符串常规类型格式化   动态格式
+                String fsNameSystemUrl = String.format(constant.JMXSERVERURLFORMAT, uri, constant.FSNAMESYSTEM);
                 //获取到bean实体
                 HadoopMetrics hadoopMetrics = client.get(HadoopMetrics.class, fsNameSystemUrl, null, null);
                 if (hadoopMetrics.getMetricsValue("tag.HAState").toString().equals("active")) {
@@ -69,7 +64,7 @@ public class HadoopJmxSchedule {
         String activeRmUri = rmUris.get(0);
         if (rmUris.size() > 1) {
             for (String uri : rmUris) {
-                String clusterMetricsUrl = String.format(JMXSERVERURLFORMAT, uri, CLUSTERMETRICS);
+                String clusterMetricsUrl = String.format(constant.JMXSERVERURLFORMAT, uri, constant.CLUSTERMETRICS);
                 HadoopMetrics hadoopMetrics = client.get(HadoopMetrics.class, clusterMetricsUrl, null, null);
                 if (hadoopMetrics.getMetricsValue("tag.ClusterMetrics").toString().equals("ResourceManager")) {
                     activeRmUri = uri;
@@ -84,7 +79,7 @@ public class HadoopJmxSchedule {
     //定时执行 获取jmx信息
     @Scheduled(cron = "* * * * * ?")
     public void hadoopMetricsCollect() {
-        //收集hdfs jmx
+        //收集hdfs jmx监控信息
         try {
             HdfsSummaryEntity hdfsSummaryEntity = reportHdfsSummary(client);
             if (hdfsSummaryEntity != null) {
@@ -94,7 +89,7 @@ public class HadoopJmxSchedule {
             logger.error(e.getMessage());
         }
 
-        //收集yarn jmx
+        //收集yarn jmx监控信息
         YarnSummaryEntity yarnSummaryEntity = reportYarnSummaryEntity(client);
         if (yarnSummaryEntity != null) {
             monitorService.addYarnSummary(yarnSummaryEntity);
@@ -121,9 +116,8 @@ public class HadoopJmxSchedule {
             yarnSummaryEntity.setTrash(true);
             return yarnSummaryEntity;
         }
-
         try {
-            String clusterMetricsUrl = String.format(JMXSERVERURLFORMAT, getActiveRmUri(rmUris), CLUSTERMETRICS);
+            String clusterMetricsUrl = String.format(constant.JMXSERVERURLFORMAT, getActiveRmUri(rmUris), constant.CLUSTERMETRICS);
             HadoopMetrics clusterMetrics = client
                     .get(HadoopMetrics.class, clusterMetricsUrl, null, null);
             if (clusterMetrics.getMetricsValue("tag.ClusterMetrics").toString()
@@ -136,7 +130,7 @@ public class HadoopJmxSchedule {
                         .setUnhealthyNodeManagerNums(
                                 (int) clusterMetrics.getMetricsValue("NumUnhealthyNMs"));
 
-                String queueMetricsUrl = String.format(JMXSERVERURLFORMAT, getActiveRmUri(rmUris), QUEUEMETRICS);
+                String queueMetricsUrl = String.format(constant.JMXSERVERURLFORMAT, getActiveRmUri(rmUris), constant.QUEUEMETRICS);
                 HadoopMetrics hadoopMetrics = client
                         .get(HadoopMetrics.class, queueMetricsUrl, null, null);
                 yarnSummaryEntity.setSubmittedApps((int) hadoopMetrics.getMetricsValue("AppsSubmitted"));
@@ -193,8 +187,8 @@ public class HadoopJmxSchedule {
         HdfsSummaryEntity hdfsSummaryEntity = new HdfsSummaryEntity();
         try {
             //拼接url
-            String nameNodeInfoUrl = String.format(JMXSERVERURLFORMAT,
-                    activeNameNodeUri, NAMENODEINFO);
+            String nameNodeInfoUrl = String.format(constant.JMXSERVERURLFORMAT,
+                    activeNameNodeUri, constant.NAMENODEINFO);
             //获取metrics
             HadoopMetrics hadoopMetrics = client.get(HadoopMetrics.class,
                     nameNodeInfoUrl, null, null);
@@ -219,7 +213,7 @@ public class HadoopJmxSchedule {
                     Long.parseLong(hadoopMetrics.getMetricsValue("NumberOfMissingBlocks").toString()));
 
             String fsNameSystemStateUrl = String
-                    .format(JMXSERVERURLFORMAT, activeNameNodeUri, FSNAMESYSTEMSTATE);
+                    .format(constant.JMXSERVERURLFORMAT, activeNameNodeUri, constant.FSNAMESYSTEMSTATE);
             HadoopMetrics fsNameSystemMetrics = client
                     .get(HadoopMetrics.class, fsNameSystemStateUrl, null, null);
             hdfsSummaryEntity
@@ -248,7 +242,7 @@ public class HadoopJmxSchedule {
             return queueMetricsEntities;
         }
 
-        String queueMetricsUrl = String.format(JMXSERVERURLFORMAT, getActiveRmUri(rmUris), QUEUEMETRICSALL);
+        String queueMetricsUrl = String.format(constant.JMXSERVERURLFORMAT, getActiveRmUri(rmUris), constant.QUEUEMETRICSALL);
         HadoopMetrics clusterMetrics = client
                 .get(HadoopMetrics.class, queueMetricsUrl, null, null);
         List<Map<String, Object>> beans = clusterMetrics.getBeans();

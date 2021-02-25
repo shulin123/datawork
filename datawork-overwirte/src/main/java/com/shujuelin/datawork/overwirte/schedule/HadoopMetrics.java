@@ -19,6 +19,7 @@ import java.util.Map;
 @Setter
 public class HadoopMetrics {
 
+    //[]对应数组集合
     List<Map<String,Object>> beans = new ArrayList<>();
 
     public Object getMetricsValue(String name){
