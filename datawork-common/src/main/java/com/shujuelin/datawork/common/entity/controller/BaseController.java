@@ -17,6 +17,7 @@ import java.util.Map;
 /**
  * @author : shujuelin
  * @date : 20:44 2021/2/9
+ * controller的基类
  */
 @ControllerAdvice
 public class BaseController {

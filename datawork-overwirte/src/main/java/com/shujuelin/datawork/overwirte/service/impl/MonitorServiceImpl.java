@@ -65,6 +65,7 @@ public class MonitorServiceImpl extends ServiceImpl<HdfsSummaryDao, HdfsSummaryE
      */
     @Override
     public HdfsSummaryEntity findHdfsSummary(int selectTime) {
+        //mybatis-plus的查询
         QueryWrapper<HdfsSummaryEntity> hdfsSummaryWrapper = new QueryWrapper<>();
         hdfsSummaryWrapper.eq("create_time",selectTime);
         HdfsSummaryEntity hdfsSummaryEntity = baseMapper.selectOne(hdfsSummaryWrapper);

@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("datawork/v1/monitor")
+//跨域
 @CrossOrigin
 public class MonitorController extends BaseController {
 
