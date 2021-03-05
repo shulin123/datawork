@@ -1,4 +1,4 @@
-package com.shujuelin.datawork.overwirte.constant;
+package com.shujuelin.datawork.common.entity.constant;
 
 /**
  * @author : shujuelin

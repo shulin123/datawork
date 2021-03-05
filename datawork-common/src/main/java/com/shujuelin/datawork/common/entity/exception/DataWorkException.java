@@ -9,6 +9,7 @@ import lombok.Getter;
 
 /**
  * 自定义异常
+ * RuntimeException  选择性处理异常
  */
 @Getter
 public class DataWorkException extends RuntimeException {

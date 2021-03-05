@@ -29,7 +29,7 @@ public class BaseController {
   @ResponseBody
   public Map<String,Object> exceptionHandler(Exception ex, HttpServletResponse response){
 
-      //检测是否自定义的异常
+      //检测是否自定义的异常  DataWorkException为父类
       if (DataWorkException.class.isAssignableFrom(ex.getClass())){
 
           DataWorkException ng = (DataWorkException) ex;
@@ -45,7 +45,7 @@ public class BaseController {
       return getResultMap(errCode,null,null);
   }
 
-  protected Map<String,Object> getResultMap(Integer code,Object data,Map<String,Object> extraMap){
+  protected Map<String,Object> getResultMap(Integer code, Object data, Map<String,Object> extraMap){
       String currentTime = sdf.format(new Date());
       HashMap<String,Object> result = new HashMap<>();
       result.put("currentTime",currentTime);

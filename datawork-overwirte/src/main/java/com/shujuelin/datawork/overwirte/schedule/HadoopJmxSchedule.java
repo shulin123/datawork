@@ -2,7 +2,7 @@ package com.shujuelin.datawork.overwirte.schedule;
 
 import cn.hutool.core.date.DateUtil;
 import com.shujuelin.datawork.common.entity.utils.StatefulHttpClient;
-import com.shujuelin.datawork.overwirte.constant.constant;
+import com.shujuelin.datawork.common.entity.constant.constant;
 import com.shujuelin.datawork.overwirte.entity.HdfsSummaryEntity;
 import com.shujuelin.datawork.overwirte.entity.QueueMetricsEntity;
 import com.shujuelin.datawork.overwirte.entity.YarnSummaryEntity;

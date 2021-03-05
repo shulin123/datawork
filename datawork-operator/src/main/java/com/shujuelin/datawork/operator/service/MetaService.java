@@ -14,13 +14,13 @@ import java.util.List;
  */
 public interface MetaService {
 
-    //创建ProjectInfoEntity
-    void createProjectInfoEntity(ProjectInfoEntity projectInfoEntity) throws IOException, InterruptedException;
+    //创建项目ProjectInfoEntity
+    void createProjectInfoEntity(ProjectInfoEntity projectInfoEntity);
 
-    //更新ProjectInfoEntity
-    void updateProjectInfoEntity(ProjectInfoEntity projectInfoEntity) throws IOException, InterruptedException;
+    //更新项目ProjectInfoEntity
+    void updateProjectInfoEntity(ProjectInfoEntity projectInfoEntity);
 
-    //删除ProjectInfoEntity
+    //删除项目ProjectInfoEntity
     void delProjectInfoEntity(long id);
 
     //查询ProjectInfoEntity
@@ -33,7 +33,7 @@ public interface MetaService {
     //分页查询
     //Page<ProjectInfoEntity> listProjectInfoEntitys(String team, int page, int size, String sort, Sort.Direction direction);
 
-    void createDbInfoEntity(DbInfoEntity dbInfoEntity) throws IOException, InterruptedException;
+    void createDbInfoEntity(DbInfoEntity dbInfoEntity);
 
     void updateDbInfoEntity(DbInfoEntity dbInfoEntity);
 
@@ -51,6 +51,7 @@ public interface MetaService {
 
     List<String> showTables(String dbName);
 
+    //拿到表的元数据信息
     Object getTableSchema(String dbName, String tableName);
 
     void createDataSource(DataSourceEntity dataSource);
