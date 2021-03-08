@@ -17,7 +17,7 @@ public class ProjectInfoEntity extends BaseEntity {
 
     private static final long    serialVersionUID = 1L;
     @TableId
-    private Long id;
+    private Integer id;
     private String name;
     //hdfs上的命名空间
     private String ns;

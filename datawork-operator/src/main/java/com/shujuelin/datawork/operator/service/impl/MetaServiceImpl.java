@@ -1,6 +1,9 @@
 package com.shujuelin.datawork.operator.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.shujuelin.datawork.common.entity.exception.DataWorkException;
+import com.shujuelin.datawork.common.entity.utils.CommonCode;
+import com.shujuelin.datawork.common.entity.utils.HadoopClient;
 import com.shujuelin.datawork.operator.dao.DataSourceDao;
 import com.shujuelin.datawork.operator.dao.DbInfoDao;
 import com.shujuelin.datawork.operator.dao.ProjectInfoDao;
@@ -8,11 +11,16 @@ import com.shujuelin.datawork.operator.entity.DataSourceEntity;
 import com.shujuelin.datawork.operator.entity.DbInfoEntity;
 import com.shujuelin.datawork.operator.entity.ProjectInfoEntity;
 import com.shujuelin.datawork.operator.service.MetaService;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.hdfs.client.HdfsAdmin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -24,6 +32,13 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    @Value("${custom.hadoop.proxyuser}")
+    private String proxyUser;
+    @Value("$custom.hadoop.conf")
+    private String hadoopConfPath;
+    @Value("$custom.hadoop.hivemetastore")
+    private String hiveMemetaStore;
+
     @Autowired
     DbInfoDao dbInfoDao;
     @Autowired
@@ -31,14 +46,30 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
 
     /**
      * 创建项目
-     * @param projectInfoEntity
+     * @param projectInfo
      */
     @Override
-    public void createProjectInfoEntity(ProjectInfoEntity projectInfoEntity) {
+    public Integer createProjectInfoEntity(ProjectInfoEntity projectInfo) {
         //创建hdfs目录
-        //设置hdfs配额
-        //设置权限
-        baseMapper.insert(projectInfoEntity);
+        String hdfsUri = String.format("hdfs://%s", projectInfo.getNs());
+        HadoopClient hadoopClient = new HadoopClient(proxyUser, hadoopConfPath, hiveMemetaStore);
+        try {
+            FileSystem fileSystem = hadoopClient.getFileSystem(null, hdfsUri);
+            if (!fileSystem.exists(new Path(projectInfo.getBasePath()))) {
+                fileSystem.mkdirs(new Path(projectInfo.getBasePath()));
+            }
+            //设置hdfs配额
+            HdfsAdmin hdfsAdmin = hadoopClient.getHdfsAdmin(hdfsUri);
+            hdfsAdmin.setQuota(new Path(projectInfo.getBasePath()), projectInfo.getDsQuota());
+            hdfsAdmin.setSpaceQuota(new Path(projectInfo.getBasePath()), projectInfo.getNsQuota());
+            //设置权限
+            baseMapper.insert(projectInfo);
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.info("创建项目信息失败 :" + e.getMessage());
+            throw new DataWorkException("任务采集表插入失败，数据库操作异常", CommonCode.SERVER_ERROR.code(),null);
+        }
+        return projectInfo.getId();
     }
 
     /**
@@ -47,6 +78,18 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
      */
     @Override
     public void updateProjectInfoEntity(ProjectInfoEntity projectInfoEntity) {
+
+        try{
+            //设置hdfs配额
+            String hdfsUri = String.format("hdfs://%s", projectInfoEntity.getNs());
+            HadoopClient hadoopClient = new HadoopClient(proxyUser, hadoopConfPath, hiveMemetaStore);
+
+            HdfsAdmin hdfsAdmin = hadoopClient.getHdfsAdmin(hdfsUri);
+            hdfsAdmin.setQuota(new Path(projectInfoEntity.getBasePath()), projectInfoEntity.getDsQuota());
+            hdfsAdmin.setSpaceQuota(new Path(projectInfoEntity.getBasePath()), projectInfoEntity.getNsQuota());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         //设置hdfs配额
         baseMapper.updateById(projectInfoEntity);
     }
@@ -115,7 +158,7 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
      */
     @Override
     public void delDbInfoEntity(long id) {
-
+        dbInfoDao.deleteById(id);
     }
 
     @Override
@@ -140,17 +183,22 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
 
     @Override
     public List<String> showTables(String dbName) {
-        return null;
+        HadoopClient hadoopClient = new HadoopClient(proxyUser, hadoopConfPath, hiveMemetaStore);
+
+        return hadoopClient.showTables(dbName);
     }
 
     @Override
     public Object getTableSchema(String dbName, String tableName) {
-        return null;
+        HadoopClient hadoopClient = new HadoopClient(proxyUser, hadoopConfPath, hiveMemetaStore);
+
+        return hadoopClient.getTableSchemas(dbName, tableName);
     }
 
     @Override
     public void createDataSource(DataSourceEntity dataSource) {
 
+         dataSourceDao.insert(dataSource);
     }
 
     @Override

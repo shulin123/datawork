@@ -19,13 +19,15 @@ import javax.jdo.annotations.Column;
 public class DataSourceEntity extends BaseEntity {
 
     @TableId
-    private Long id;
+    private Integer id;
     private String name;
     //数据源类型
     private SourceType sourceType;
     //连接信息(一个大的json)
     private String connectInfo;
+    //项目名称
     private String projectName;
+    //项目id
     private Long projectId;
     private String admin;
     private String team;

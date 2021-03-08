@@ -22,7 +22,7 @@ public class QueueMetricsEntity extends BaseEntity {
      * 自增id
      */
     @TableId
-    private Long id;
+    private Integer id;
     //队列名称
     private String queueName;
     //队列中pending的数量

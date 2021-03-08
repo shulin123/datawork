@@ -19,7 +19,7 @@ public class DbInfoEntity extends BaseEntity {
     private static final long    serialVersionUID = 1L;
 
     @TableId
-    private Long id;
+    private Integer id;
     private String name;
     private String detail;
     //属于哪个层级

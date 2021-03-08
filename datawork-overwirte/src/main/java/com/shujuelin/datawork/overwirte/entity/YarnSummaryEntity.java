@@ -20,57 +20,57 @@ import lombok.EqualsAndHashCode;
 public class YarnSummaryEntity extends BaseEntity {
 
     @TableId
-    private Long id;
+    private Integer id;
 
     /**
      * 活着的nodemanager
      */
-    private int liveNodeManagerNums;
+    private Integer liveNodeManagerNums;
 
     /**
      * 死亡的nodemanager
      */
-    private int deadNodeManagerNums;
+    private Integer deadNodeManagerNums;
 
     /**
      * 不健康的nodemanager
      */
-    private int unhealthyNodeManagerNums;
+    private Integer unhealthyNodeManagerNums;
 
     /**
      * 已经提交的app数量
      */
-    private int submittedApps;
+    private Integer submittedApps;
 
     /**
      * 运行的app数量
      */
-    private int runningApps;
+    private Integer runningApps;
 
     /**
      * 完成的app数量
      */
-    private int completedApps;
+    private Integer completedApps;
 
     /**
      * 杀死的app数量
      */
-    private int killedApps;
+    private Integer killedApps;
 
     /**
      * 提交失败的应用数量
      */
-    private int failedApps;
+    private Integer failedApps;
 
     /**
      * 分配的核数
      */
-    private int allocatedCores;
+    private Integer allocatedCores;
 
     /**
      * 分配的容量
      */
-    private int allocatedContainers;
+    private Integer allocatedContainers;
 
     /**
      * 可利用的内存
@@ -80,7 +80,7 @@ public class YarnSummaryEntity extends BaseEntity {
     /**
      * 可利用的核数
      */
-    private int availableCores;
+    private Integer availableCores;
 
     /**
      * 待定的内存
@@ -90,16 +90,16 @@ public class YarnSummaryEntity extends BaseEntity {
     /**
      * 待定的cpu核数
      */
-    private int pendingCores;
+    private Integer pendingCores;
 
     /**
      * 待定的资源
      */
-    private int pendingContainers;
+    private Integer pendingContainers;
     /**
      *待定的app数
      */
-    private int pendingApps;
+    private Integer pendingApps;
 
     /**
      * 恢复的内存
@@ -109,12 +109,12 @@ public class YarnSummaryEntity extends BaseEntity {
     /**
      * 恢复的核数
      */
-    private int reservedCores;
+    private Integer reservedCores;
 
     /**
      * 恢复的容量
      */
-    private int reservedContainers;
+    private Integer reservedContainers;
 
     /**
      * 分配的内存

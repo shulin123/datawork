@@ -3,7 +3,7 @@ package com.shujuelin.datawork.common.entity.constant;
 /**
  * @author : shujuelin
  * @date : 17:03 2021/2/25
- * 定义的系统常亮
+ * 定义的hadoop的常量
  */
 public class constant {
 

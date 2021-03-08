@@ -23,7 +23,7 @@ import java.util.Map;
 public class BaseController {
 
     //时间格式化
-  protected  SimpleDateFormat sdf =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+  private   SimpleDateFormat sdf =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
   @ExceptionHandler
   @ResponseBody
@@ -41,11 +41,11 @@ public class BaseController {
       }
   }
 
-  protected Map<String,Object> getError(int errCode,String errMsg){
+  public Map<String,Object> getError(int errCode,String errMsg){
       return getResultMap(errCode,null,null);
   }
 
-  protected Map<String,Object> getResultMap(Integer code, Object data, Map<String,Object> extraMap){
+  public Map<String,Object> getResultMap(Integer code, Object data, Map<String,Object> extraMap){
       String currentTime = sdf.format(new Date());
       HashMap<String,Object> result = new HashMap<>();
       result.put("currentTime",currentTime);

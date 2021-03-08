@@ -1,5 +1,5 @@
 server:
-  port: 9042
+  port: 9043
 
 logging:
   level:
@@ -47,7 +47,7 @@ spring:
     name: datawork-overwrite
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.239.128:3306/datawork_overwrite?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://192.168.239.128:3306/datawork_operator?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: "123456"
 

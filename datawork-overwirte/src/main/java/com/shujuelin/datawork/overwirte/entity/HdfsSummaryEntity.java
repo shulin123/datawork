@@ -23,7 +23,7 @@ public class HdfsSummaryEntity extends BaseEntity {
     * 自增id
     */
    @TableId
-   private Long id;
+   private Integer id;
 
    /**
     * hdfs总容量
@@ -68,14 +68,14 @@ public class HdfsSummaryEntity extends BaseEntity {
    /**
     * 活动的节点
     */
-   private int liveDataNodeNums;
+   private Integer liveDataNodeNums;
 
    /**
     * 死亡的节点
     */
-   private int deadDataNodeNums;
+   private Integer deadDataNodeNums;
    /**
     * 节点容量故障数
     */
-   private int volumeFailuresTotal;
+   private Integer volumeFailuresTotal;
 }

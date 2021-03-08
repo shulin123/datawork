@@ -15,7 +15,7 @@ import java.util.List;
 public interface MetaService {
 
     //创建项目ProjectInfoEntity
-    void createProjectInfoEntity(ProjectInfoEntity projectInfoEntity);
+    Integer createProjectInfoEntity(ProjectInfoEntity projectInfo);
 
     //更新项目ProjectInfoEntity
     void updateProjectInfoEntity(ProjectInfoEntity projectInfoEntity);
