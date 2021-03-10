@@ -1,9 +1,11 @@
 package com.shujuelin.datawork.common.entity;
 
+import cn.hutool.core.date.DateTime;
 import lombok.Data;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author : shujuelin
@@ -14,5 +16,5 @@ public class BaseEntity implements Serializable {
     //是否是脏数据
     private boolean isTrash = false;
     //该条数据的插入时间
-    private int createTime;
+    private Date createTime;
 }

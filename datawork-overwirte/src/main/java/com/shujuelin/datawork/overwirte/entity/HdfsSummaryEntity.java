@@ -1,5 +1,6 @@
 package com.shujuelin.datawork.overwirte.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -22,48 +23,8 @@ public class HdfsSummaryEntity extends BaseEntity {
    /**
     * 自增id
     */
-   @TableId
+   @TableId(value = "id",type = IdType.AUTO)
    private Integer id;
-
-   /**
-    * hdfs总容量
-    */
-   private Long total;
-
-   /**
-    * hdfs已经使用的容量
-    */
-   private Long dfsUsed;
-
-   /**
-    * hdfs使用百分比
-    */
-   private float percentUsed;
-
-   /**
-    * hdfs的空闲空间
-    */
-   private Long dfsFree;
-
-   /**
-    * 配置的dfs的空间有多少空间被不是hdfs的文件占用了的
-    */
-   private Long nonDfsUsed;
-
-   /**
-    * hdfs总的blocks数量
-    */
-   private Long totalBlocks;
-
-   /**
-    * hdfs总的文件数量
-    */
-   private Long totalFiles;
-
-   /**
-    * 丢失的blocks数量
-    */
-   private Long missingBlocks;
 
    /**
     * 活动的节点
@@ -74,8 +35,58 @@ public class HdfsSummaryEntity extends BaseEntity {
     * 死亡的节点
     */
    private Integer deadDataNodeNums;
+
+   /**
+    * hdfs的空闲空间
+    */
+   private Long dfsFree;
+
+   /**
+    * hdfs已经使用的容量
+    */
+   private Long dfsUsed;
+
+
+   /**
+    * hdfs使用百分比
+    */
+   private float percentUsed;
+
+
+   /**
+    * 丢失的blocks数量
+    */
+   private Long missingBlocks;
+
+   /**
+    * hdfs总容量
+    */
+   private Long total;
+
+
+   /**
+    * hdfs总的blocks数量
+    */
+   private Long totalBlocks;
+
+
+
+   /**
+    * hdfs总的文件数量
+    */
+   private Long totalFiles;
+
+
+
+
    /**
     * 节点容量故障数
     */
    private Integer volumeFailuresTotal;
+
+   /**
+    * 配置的dfs的空间有多少空间被不是hdfs的文件占用了的
+    */
+   private Long nonDfsUsed;
+
 }

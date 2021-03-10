@@ -44,7 +44,7 @@ spring:
     multipart:
       enabled=false:
   application:
-    name: datawork-overwrite
+    name: datawork-operator
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.239.128:3306/datawork_operator?useUnicode=true&characterEncoding=UTF-8
@@ -58,8 +58,8 @@ custom:
     nn:
       uri: 192.168.239.128:50070
     conf: /home/jixin/imooc_3/naga/naga-server/src/main/resources
-    proxyuser: hadoop
-    hivemetastore: thrift://47.108.140.82:9083
+    proxyuser: root
+    hivemetastore: thrift://192.168.239.128:9083
   task:
     packageDir: /home/jixin/imoocprojects/naga/packages
     azkaban:

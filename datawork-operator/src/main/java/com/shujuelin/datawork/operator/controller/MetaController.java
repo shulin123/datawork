@@ -23,20 +23,35 @@ public class MetaController {
     @Autowired
     MetaService metaService;
 
-    //列出projectInfo (分页)
 
-    //创建projectInfo
+    /**
+     * 创建projectInfo
+     * @param projectInfo
+     * @return
+     */
     @PostMapping(value = "/project/add")
     public R addProject(@RequestBody ProjectInfoEntity projectInfo){
 
         log.info("This interface addProject Begin: ");
-        // 验证权限
         long startTime = System.currentTimeMillis();
         int uuid = metaService.createProjectInfoEntity(projectInfo);
         long endTime=System.currentTimeMillis();
         log.info("This interface addProject End: executeDeploy cost = "+(endTime-startTime)+"ms");
         return R.ok().put(uuid);
     }
+
+    @PostMapping(value = "/project/update")
+   public R updateProject(@RequestBody ProjectInfoEntity projectInfo){
+
+       log.info("This interface updateProject Begin: ");
+       long startTime = System.currentTimeMillis();
+       metaService.updateProjectInfoEntity(projectInfo);
+       long endTime=System.currentTimeMillis();
+       log.info("This interface updateProject End: executeDeploy cost = "+(endTime-startTime)+"ms");
+       return R.ok();
+   }
+
     //列出dbInfo (分页)
+
     //创建dbInfo
 }

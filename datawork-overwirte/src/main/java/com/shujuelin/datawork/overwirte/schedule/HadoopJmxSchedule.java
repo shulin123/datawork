@@ -1,5 +1,6 @@
 package com.shujuelin.datawork.overwirte.schedule;
 
+import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 import com.shujuelin.datawork.common.entity.utils.StatefulHttpClient;
 import com.shujuelin.datawork.common.entity.constant.constant;
@@ -160,7 +161,7 @@ public class HadoopJmxSchedule {
                 yarnSummaryEntity
                         .setReservedContainers((int) hadoopMetrics.getMetricsValue("ReservedContainers"));
 
-                yarnSummaryEntity.setCreateTime((int) DateUtil.currentSeconds());
+                yarnSummaryEntity.setCreateTime(new Date());
                 yarnSummaryEntity.setTrash(false);
             }
         } catch (Exception e) {
@@ -226,7 +227,7 @@ public class HadoopJmxSchedule {
             logger.error(e.getMessage());
             hdfsSummaryEntity.setTrash(true);
         }
-        hdfsSummaryEntity.setCreateTime((int) DateUtil.currentSeconds());
+        hdfsSummaryEntity.setCreateTime(new Date());
         hdfsSummaryEntity.setTrash(false);
         return hdfsSummaryEntity;
     }
@@ -260,7 +261,7 @@ public class HadoopJmxSchedule {
                 qm.setPendingMb((Integer) bean.get("PendingMB"));
                 qm.setMetricsTime(timestamp);
                 qm.setQueueName((String) bean.get("tag.Queue"));
-                qm.setCreateTime(timestamp);
+                qm.setCreateTime(new Date());
                 queueMetricsEntities.add(qm);
             }
         }

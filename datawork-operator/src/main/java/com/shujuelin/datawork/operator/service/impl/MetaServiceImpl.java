@@ -67,31 +67,34 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
         }catch (Exception e){
             e.printStackTrace();
             logger.info("创建项目信息失败 :" + e.getMessage());
-            throw new DataWorkException("任务采集表插入失败，数据库操作异常", CommonCode.SERVER_ERROR.code(),null);
+            throw new DataWorkException("项目表插入失败，数据库操作异常", CommonCode.SERVER_ERROR.code(),null);
         }
         return projectInfo.getId();
     }
 
     /**
      * 更新项目
-     * @param projectInfoEntity
+     * @param projectInfo
      */
     @Override
-    public void updateProjectInfoEntity(ProjectInfoEntity projectInfoEntity) {
+    public void updateProjectInfoEntity(ProjectInfoEntity projectInfo) {
 
         try{
             //设置hdfs配额
-            String hdfsUri = String.format("hdfs://%s", projectInfoEntity.getNs());
+            String hdfsUri = String.format("hdfs://%s", projectInfo.getNs());
             HadoopClient hadoopClient = new HadoopClient(proxyUser, hadoopConfPath, hiveMemetaStore);
-
             HdfsAdmin hdfsAdmin = hadoopClient.getHdfsAdmin(hdfsUri);
-            hdfsAdmin.setQuota(new Path(projectInfoEntity.getBasePath()), projectInfoEntity.getDsQuota());
-            hdfsAdmin.setSpaceQuota(new Path(projectInfoEntity.getBasePath()), projectInfoEntity.getNsQuota());
+            hdfsAdmin.setQuota(new Path(projectInfo.getBasePath()), projectInfo.getDsQuota());
+            hdfsAdmin.setSpaceQuota(new Path(projectInfo.getBasePath()), projectInfo.getNsQuota());
+            ProjectInfoEntity entity = new ProjectInfoEntity();
+            entity.setId(projectInfo.getId());
+            entity.setAdmin(projectInfo.getAdmin());
+            baseMapper.updateById(entity);
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("更新项目信息失败 :" + e.getMessage());
+            throw  new DataWorkException("项目表更新失败，数据库操作异常", CommonCode.SERVER_ERROR.code(),null);
         }
-        //设置hdfs配额
-        baseMapper.updateById(projectInfoEntity);
     }
 
     /**

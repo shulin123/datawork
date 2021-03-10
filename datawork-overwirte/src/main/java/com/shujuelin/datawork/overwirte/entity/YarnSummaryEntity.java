@@ -1,5 +1,6 @@
 package com.shujuelin.datawork.overwirte.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -19,7 +20,7 @@ import lombok.EqualsAndHashCode;
 @TableName("yarn_summary")
 public class YarnSummaryEntity extends BaseEntity {
 
-    @TableId
+    @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
 
     /**

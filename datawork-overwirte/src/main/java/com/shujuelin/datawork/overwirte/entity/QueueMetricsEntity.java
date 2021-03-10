@@ -1,6 +1,7 @@
 package com.shujuelin.datawork.overwirte.entity;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.shujuelin.datawork.common.entity.BaseEntity;
@@ -21,7 +22,7 @@ public class QueueMetricsEntity extends BaseEntity {
     /**
      * 自增id
      */
-    @TableId
+    @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
     //队列名称
     private String queueName;

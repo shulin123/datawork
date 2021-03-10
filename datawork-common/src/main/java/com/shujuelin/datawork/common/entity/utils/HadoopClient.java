@@ -34,7 +34,9 @@ public class HadoopClient {
     private Configuration conf;
     //hive元数据的地址
     private String hiveMetaStoreUris;
+    //用户组信息
     private UserGroupInformation ugi;
+    //代理用户
     private String proxyUser;
 
     public HadoopClient(String proxyUser, String hadoopConfPath, String hiveMetaStoreUris) {
@@ -51,7 +53,9 @@ public class HadoopClient {
         if (Strings.isNullOrEmpty(realUser)) {
             return ugi.doAs(action);
         }
+        //创建proxyUser用户
         UserGroupInformation proxyUser = UserGroupInformation.createProxyUser(realUser, ugi);
+        //访问集群时通过proxyUser.doAs方式进行调用
         return proxyUser.doAs(action);
     }
 
