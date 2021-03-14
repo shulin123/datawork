@@ -1,6 +1,7 @@
 package com.shujuelin.datawork.common.entity;
 
 import cn.hutool.core.date.DateTime;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 
@@ -16,5 +17,6 @@ public class BaseEntity implements Serializable {
     //是否是脏数据
     private boolean isTrash = false;
     //该条数据的插入时间
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date createTime;
 }

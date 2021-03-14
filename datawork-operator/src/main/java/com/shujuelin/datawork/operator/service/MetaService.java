@@ -1,6 +1,7 @@
 package com.shujuelin.datawork.operator.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.shujuelin.datawork.operator.Vo.ProjectVo;
 import com.shujuelin.datawork.operator.entity.DataSourceEntity;
 import com.shujuelin.datawork.operator.entity.DbInfoEntity;
 import com.shujuelin.datawork.operator.entity.ProjectInfoEntity;
@@ -18,20 +19,18 @@ public interface MetaService {
     Integer createProjectInfoEntity(ProjectInfoEntity projectInfo);
 
     //更新项目ProjectInfoEntity
-    void updateProjectInfoEntity(ProjectInfoEntity projectInfoEntity);
+    void updateProjectInfoEntity(ProjectInfoEntity projectInfo);
 
     //删除项目ProjectInfoEntity
-    void delProjectInfoEntity(long id);
+    void delProjectInfoEntity(ProjectInfoEntity projectInfo);
 
-    //查询ProjectInfoEntity
+    //查询ProjectInfoEntity详情
     ProjectInfoEntity findProjectInfoEntityById(long id);
 
-    ProjectInfoEntity findProjectInfoEntityByName(String name);
 
-    List<String> listProjectNames(String team);
 
     //分页查询
-    //Page<ProjectInfoEntity> listProjectInfoEntitys(String team, int page, int size, String sort, Sort.Direction direction);
+    ProjectVo queryListProject(Integer current, Integer size);
 
     void createDbInfoEntity(DbInfoEntity dbInfoEntity);
 

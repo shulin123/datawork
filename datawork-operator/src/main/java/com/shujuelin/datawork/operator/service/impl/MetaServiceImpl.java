@@ -1,9 +1,12 @@
 package com.shujuelin.datawork.operator.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.shujuelin.datawork.common.entity.exception.DataWorkException;
 import com.shujuelin.datawork.common.entity.utils.CommonCode;
 import com.shujuelin.datawork.common.entity.utils.HadoopClient;
+import com.shujuelin.datawork.operator.Vo.ProjectVo;
 import com.shujuelin.datawork.operator.dao.DataSourceDao;
 import com.shujuelin.datawork.operator.dao.DbInfoDao;
 import com.shujuelin.datawork.operator.dao.ProjectInfoDao;
@@ -49,7 +52,7 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
      * @param projectInfo
      */
     @Override
-    public Integer createProjectInfoEntity(ProjectInfoEntity projectInfo) {
+    public Integer  createProjectInfoEntity(ProjectInfoEntity projectInfo) {
         //创建hdfs目录
         String hdfsUri = String.format("hdfs://%s", projectInfo.getNs());
         HadoopClient hadoopClient = new HadoopClient(proxyUser, hadoopConfPath, hiveMemetaStore);
@@ -99,14 +102,21 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
 
     /**
      * 删除项目
-     * @param id
+     * @param projectInfo
      */
     @Override
-    public void delProjectInfoEntity(long id) {
+    public void delProjectInfoEntity(ProjectInfoEntity projectInfo) {
       //并不是正真的删除，是设置为脏数据
-        ProjectInfoEntity projectInfoEntity = baseMapper.selectById(id);
+        ProjectInfoEntity projectInfoEntity = baseMapper.selectById(projectInfo.getId());
         projectInfoEntity.setTrash(true);
-        baseMapper.insert(projectInfoEntity);
+        try {
+            baseMapper.updateById(projectInfoEntity);
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("删除项目信息失败 :" + e.getMessage());
+            throw  new DataWorkException("删除项目信息失败，数据库操作异常", CommonCode.SERVER_ERROR.code(),null);
+        }
+
     }
 
     /**
@@ -121,19 +131,26 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
     }
 
     /**
-     * 通过名称查询
-     * @param name
+     * 分页查询
+     *参数一是当前页，参数二是每页个数
+     * @param current
+     * @param size
      * @return
      */
     @Override
-    public ProjectInfoEntity findProjectInfoEntityByName(String name) {
-        return null;
+    public ProjectVo queryListProject(Integer current, Integer size) {
+
+        ProjectVo projectVo = new ProjectVo();
+        IPage<ProjectInfoEntity> page = new Page<>(current, size);
+        baseMapper.selectPage(page, null);
+        projectVo.setCurrent(current);
+        projectVo.setSize(size);
+        projectVo.setTotal(page.getTotal());
+        projectVo.setUserList(page.getRecords());
+        return projectVo;
+
     }
 
-    @Override
-    public List<String> listProjectNames(String team) {
-        return null;
-    }
 
     /**
      * 新增db

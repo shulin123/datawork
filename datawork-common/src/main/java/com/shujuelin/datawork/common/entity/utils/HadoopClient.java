@@ -34,7 +34,7 @@ public class HadoopClient {
     private Configuration conf;
     //hive元数据的地址
     private String hiveMetaStoreUris;
-    //用户组信息
+    //用户组信息：保存hadoop用户及组信息
     private UserGroupInformation ugi;
     //代理用户
     private String proxyUser;
@@ -49,6 +49,15 @@ public class HadoopClient {
 
     }
 
+    /**
+     * 泛型的方法
+     * @param action
+     * @param realUser
+     * @param <T>
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public <T> T doPrivileged(PrivilegedExceptionAction<T> action, String realUser) throws IOException, InterruptedException {
         if (Strings.isNullOrEmpty(realUser)) {
             return ugi.doAs(action);
@@ -59,8 +68,18 @@ public class HadoopClient {
         return proxyUser.doAs(action);
     }
 
+    /**
+     * 获取hdfs的文件系统
+     * 采用匿名内部类
+     * @param realUser
+     * @param hdfsUri
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public FileSystem getFileSystem(String realUser, String hdfsUri) throws IOException, InterruptedException {
         return doPrivileged(
+                //直接实例化接口对象
                 new PrivilegedExceptionAction<FileSystem>() {
                     @Override
                     public FileSystem run() throws Exception {
@@ -69,6 +88,13 @@ public class HadoopClient {
                 }, realUser);
     }
 
+    /**
+     * 获取hdfs的Admin
+     * @param hdfsUri
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public HdfsAdmin getHdfsAdmin(String hdfsUri) throws IOException, InterruptedException {
         return doPrivileged(
                 new PrivilegedExceptionAction<HdfsAdmin>() {
@@ -79,6 +105,16 @@ public class HadoopClient {
                 }, null);
     }
 
+    /**
+     * hive创建数据库
+     * @param name
+     * @param dbPath
+     * @param desc
+     * @param realUser
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public Object createDataBase(String name,String dbPath,String desc,String realUser) throws IOException, InterruptedException {
         return doPrivileged(new PrivilegedExceptionAction<Object>() {
             @Override
@@ -108,6 +144,11 @@ public class HadoopClient {
         },realUser);
     }
 
+    /**
+     * 获取hive数据库里的所有表
+     * @param dbName
+     * @return
+     */
     public List<String> showTables(String dbName){
         HiveMetaStoreClient hiveMetaStoreClient = null;
         try{
@@ -125,6 +166,12 @@ public class HadoopClient {
         }
     }
 
+    /**
+     * 获取hive数据库里某张表的元数据
+     * @param dbName
+     * @param tableName
+     * @return
+     */
     public List<Map<String,String>> getTableSchemas(String dbName, String tableName){
         HiveMetaStoreClient hiveMetaStoreClient = null;
         try{
@@ -134,6 +181,7 @@ public class HadoopClient {
             hiveMetaStoreClient=new HiveMetaStoreClient(hiveConf);
 
             List<FieldSchema> schema = hiveMetaStoreClient.getSchema(dbName, tableName);
+            //java8的流操作
             return schema.stream().map(col->{
                 Map<String,String> colInfo=new HashMap<>();
                 colInfo.put("name",col.getName());
@@ -141,7 +189,6 @@ public class HadoopClient {
                 colInfo.put("comment",col.getComment());
                 return colInfo;
             }).collect(Collectors.toList());
-
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
         }finally {

@@ -6,6 +6,8 @@ import com.shujuelin.datawork.common.entity.utils.R;
 import com.shujuelin.datawork.overwirte.entity.HdfsSummaryEntity;
 import com.shujuelin.datawork.overwirte.entity.YarnSummaryEntity;
 import com.shujuelin.datawork.overwirte.service.MonitorService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,6 +25,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("datawork/v1/monitor")
+@Api("大数据平台之数据概览")
 //跨域
 @CrossOrigin
 public class MonitorController  {
@@ -34,6 +37,7 @@ public class MonitorController  {
      * 获取当前时间hdfs的summary
      * @return
      */
+    @ApiOperation("Hdf")
     @GetMapping(value = "/storage")
     public R getHdfsSummary(){
 

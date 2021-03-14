@@ -1,6 +1,7 @@
 package com.shujuelin.datawork.operator.controller;
 
 import com.shujuelin.datawork.common.entity.utils.R;
+import com.shujuelin.datawork.operator.Vo.ProjectVo;
 import com.shujuelin.datawork.operator.entity.ProjectInfoEntity;
 import com.shujuelin.datawork.operator.service.MetaService;
 import com.shujuelin.datawork.operator.service.impl.MetaServiceImpl;
@@ -40,16 +41,65 @@ public class MetaController {
         return R.ok().put(uuid);
     }
 
+    /**
+     * 更新project项目
+     * @param projectInfo
+     * @return
+     */
     @PostMapping(value = "/project/update")
    public R updateProject(@RequestBody ProjectInfoEntity projectInfo){
 
        log.info("This interface updateProject Begin: ");
        long startTime = System.currentTimeMillis();
        metaService.updateProjectInfoEntity(projectInfo);
-       long endTime=System.currentTimeMillis();
+       long endTime = System.currentTimeMillis();
        log.info("This interface updateProject End: executeDeploy cost = "+(endTime-startTime)+"ms");
        return R.ok();
    }
+
+    /**
+     * 删除project项目
+     * @param projectInfo
+     * @return
+     */
+   @PostMapping(value = "/project/delete")
+   public R delProject(@RequestBody ProjectInfoEntity projectInfo){
+       log.info("This interface delProject Begin: ");
+       long startTime = System.currentTimeMillis();
+       metaService.delProjectInfoEntity(projectInfo);
+       long endTime = System.currentTimeMillis();
+       log.info("This interface updateProject End: executeDeploy cost = "+(endTime-startTime)+"ms");
+       return R.ok();
+   }
+
+    /**
+     * 通过id进行查询
+     * @param id
+     * @return
+     */
+   @GetMapping(value = "/project/query")
+   public R findProject(@RequestParam("id") int id){
+       log.info("This interface delProject Begin: ");
+       long startTime = System.currentTimeMillis();
+       ProjectInfoEntity projectInfo = metaService.findProjectInfoEntityById(id);
+       long endTime = System.currentTimeMillis();
+       log.info("This interface updateProject End: executeDeploy cost = "+(endTime-startTime)+"ms");
+       return R.ok().put(projectInfo);
+   }
+
+
+
+   @GetMapping(value = "/project/list")
+   public R listProject(@RequestParam("current") Integer current,@RequestParam("size") Integer size){
+       log.info("This interface listProject Begin: ");
+       long startTime = System.currentTimeMillis();
+       ProjectVo projectVo = metaService.queryListProject(current,size);
+       long endTime = System.currentTimeMillis();
+       log.info("This interface updateProject End: executeDeploy cost = "+(endTime-startTime)+"ms");
+       return R.ok().put(projectVo);
+   }
+
+
 
     //列出dbInfo (分页)
 
