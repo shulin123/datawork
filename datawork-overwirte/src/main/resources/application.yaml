@@ -47,7 +47,7 @@ spring:
     name: datawork-overwrite
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.239.128:3306/datawork_overwrite?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://192.168.239.128:3306/datawork_overwrite?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: "123456"
 

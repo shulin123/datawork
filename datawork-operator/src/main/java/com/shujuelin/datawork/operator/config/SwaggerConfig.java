@@ -25,7 +25,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo(){
         Contact contact = new Contact("Carrol", "https://www.baidu.com", "8888@qq.com");
         return new  ApiInfo("数据概览的Swagger的API文档",
-                "大数据平台-数据概览",
+                "大数据平台-数据业务",
                 "V1.0",
                 "urn:tos",
                 contact,

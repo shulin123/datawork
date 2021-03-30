@@ -12,6 +12,7 @@ import lombok.EqualsAndHashCode;
 /**
  * @author : shujuelin
  * @date : 0:06 2021/2/10
+ * 队列
  */
 
 @Data

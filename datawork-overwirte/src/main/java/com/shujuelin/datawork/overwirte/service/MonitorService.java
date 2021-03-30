@@ -5,6 +5,7 @@ import com.shujuelin.datawork.overwirte.entity.HdfsSummaryEntity;
 import com.shujuelin.datawork.overwirte.entity.QueueMetricsEntity;
 import com.shujuelin.datawork.overwirte.entity.YarnSummaryEntity;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,17 +25,18 @@ public interface MonitorService {
     void addQueueMetrics(List<QueueMetricsEntity> queueMetricEntities);
 
     //根据时间查找最近一次的hdfs summary
-    HdfsSummaryEntity findHdfsSummary(int selectTime);
+    HdfsSummaryEntity findHdfsSummary(Date selectTime);
 
     //根据时间查找最近一次的yarn summary
-    YarnSummaryEntity findYarnSummary(int selectTime);
+    YarnSummaryEntity findYarnSummary(Date selectTime);
 
     //根据时间查找最近一次的queue metric
-    List<QueueMetricsEntity> findQueueMetrics(int selectTime);
+    List<QueueMetricsEntity> findQueueMetrics(Date selectTime);
 
     //查询某段时间hdfs summary
-    List<HdfsSummaryEntity> findHdfsSummaryBetween(int startTime, int endTime);
+    List<HdfsSummaryEntity> findHdfsSummaryBetween(Long startTime, Long endTime);
 
     //查询某段时间yarn summary
-    List<YarnSummaryEntity> findYarnSummaryBetween(int startTime, int endTime);
+    List<YarnSummaryEntity> findYarnSummaryBetween(Long startTime, Long endTime);
+
 }

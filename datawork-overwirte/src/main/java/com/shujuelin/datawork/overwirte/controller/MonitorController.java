@@ -4,10 +4,12 @@ import cn.hutool.core.date.DateUtil;
 import com.shujuelin.datawork.common.entity.controller.BaseController;
 import com.shujuelin.datawork.common.entity.utils.R;
 import com.shujuelin.datawork.overwirte.entity.HdfsSummaryEntity;
+import com.shujuelin.datawork.overwirte.entity.QueueMetricsEntity;
 import com.shujuelin.datawork.overwirte.entity.YarnSummaryEntity;
 import com.shujuelin.datawork.overwirte.service.MonitorService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.Data;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,11 +39,11 @@ public class MonitorController  {
      * 获取当前时间hdfs的summary
      * @return
      */
-    @ApiOperation("Hdf")
+    @ApiOperation("HDFS的指标")
     @GetMapping(value = "/storage")
     public R getHdfsSummary(){
 
-    HdfsSummaryEntity hdfsSummaryEntity = monitorService.findHdfsSummary((int) DateUtil.currentSeconds());
+    HdfsSummaryEntity hdfsSummaryEntity = monitorService.findHdfsSummary(new Date());
     return R.ok().put(hdfsSummaryEntity);
     }
 
@@ -49,9 +51,10 @@ public class MonitorController  {
      * 获取当前时间yar的summary
      * @return
      */
+    @ApiOperation("yarn的指标")
     @GetMapping(value = "/calc")
     public R getYarnSummary() {
-        YarnSummaryEntity yarnSummaryEntity = monitorService.findYarnSummary((int) DateUtil.currentSeconds());
+        YarnSummaryEntity yarnSummaryEntity = monitorService.findYarnSummary(new Date());
         return R.ok().put(yarnSummaryEntity);
     }
 
@@ -59,38 +62,39 @@ public class MonitorController  {
      * hdfs图表
      * @return
      */
+    @ApiOperation("HDFS存储变化曲线")
     @GetMapping(value = "/storage/chart")
     public R getHdfsSummaryList() {
         long current = System.currentTimeMillis();
-        //获取0点数据   getRawOffset用于获取以毫秒为单位的时间量添加到UTC在这个时间段获得的标准时间
-        long zero = current - TimeZone.getDefault().getRawOffset();
-        List<HdfsSummaryEntity> hdfsSummaryBetween = monitorService.findHdfsSummaryBetween((int) (zero / 1000), (int) (current / 1000));
+        //获取当前日期的0点时刻
+        long zero = current/(1000*3600*24)*(1000*3600*24) - TimeZone.getDefault().getRawOffset();
+        List<HdfsSummaryEntity> hdfsSummaryBetween = monitorService.findHdfsSummaryBetween(zero,current);
         List<String> columns = Arrays.stream(FieldUtils.getAllFields(HdfsSummaryEntity.class))
                 .map(Field::getName).collect(Collectors.toList());
         Map<String, Object> data = new HashMap<>();
         data.put("rows", hdfsSummaryBetween);
         data.put("columns", columns);
-        return R.ok(data);
+        return R.ok().put(data);
     }
 
     /**
-     * yarn的图表
+     * 队列的状态图
      * @return
      */
-    @GetMapping(value = "/calc/chart")
+    @ApiOperation("YARN的状态图")
+    @GetMapping(value = "/calc/queue")
     public R getYarnSummaryList() {
-        //获取当前时间
-        long current = System.currentTimeMillis();
-        long zero = current - TimeZone.getDefault().getRawOffset();
 
-        List<YarnSummaryEntity> yarnSummaryBetween = monitorService.findYarnSummaryBetween((int) (zero/1000), (int) (current/1000));
+        List<QueueMetricsEntity> yarnSummaryBetween = monitorService.findQueueMetrics(new Date());
 
         //通过反射拿到列
-        List<String> columns = Arrays.stream(FieldUtils.getAllFields(YarnSummaryEntity.class)).map(Field::getName).collect(Collectors.toList());
+        List<String> columns = Arrays.stream(FieldUtils.getAllFields(QueueMetricsEntity.class)).map(Field::getName).collect(Collectors.toList());
 
         Map<String, Object> data = new HashMap<>();
         data.put("columns", columns);
         data.put("rows", yarnSummaryBetween);
-        return R.ok(data);
+        return R.ok().put(data);
     }
+
+
 }

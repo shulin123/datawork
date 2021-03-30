@@ -78,7 +78,7 @@ public class HadoopJmxSchedule {
 
 
     //定时执行 获取jmx信息
-    @Scheduled(cron = "* * * * * ?")
+    @Scheduled(cron = "0 * * * * ?")
     public void hadoopMetricsCollect() {
         //收集hdfs jmx监控信息
         try {
@@ -178,7 +178,7 @@ public class HadoopJmxSchedule {
      * @throws IOException
      */
     private HdfsSummaryEntity reportHdfsSummary(StatefulHttpClient client) throws IOException {
-        //调用get active namenode uri
+        //调用get active namenode uri   把数组转为list集合
         List<String> nameNodeUris = Arrays.asList(nnUriStr.split(";"));
         if (nameNodeUris.isEmpty()) {
             return null;
@@ -232,6 +232,11 @@ public class HadoopJmxSchedule {
         return hdfsSummaryEntity;
     }
 
+    /**
+     * 队列信息
+     * @return
+     * @throws IOException
+     */
     private List<QueueMetricsEntity> queryQueueMetrics() throws IOException {
         List<QueueMetricsEntity> queueMetricsEntities = new ArrayList<>();
         Date now = new Date();

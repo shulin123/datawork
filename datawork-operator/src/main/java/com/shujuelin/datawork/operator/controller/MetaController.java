@@ -5,6 +5,8 @@ import com.shujuelin.datawork.operator.Vo.ProjectVo;
 import com.shujuelin.datawork.operator.entity.ProjectInfoEntity;
 import com.shujuelin.datawork.operator.service.MetaService;
 import com.shujuelin.datawork.operator.service.impl.MetaServiceImpl;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * @author : shujuelin
  * @date : 17:08 2021/3/6
  */
+@Api("数据业务")
 @RestController
 @RequestMapping("datawork/v1/Meta")
 //跨域
@@ -30,6 +33,7 @@ public class MetaController {
      * @param projectInfo
      * @return
      */
+    @ApiOperation("创建项目")
     @PostMapping(value = "/project/add")
     public R addProject(@RequestBody ProjectInfoEntity projectInfo){
 
@@ -46,6 +50,7 @@ public class MetaController {
      * @param projectInfo
      * @return
      */
+    @ApiOperation("更新项目")
     @PostMapping(value = "/project/update")
    public R updateProject(@RequestBody ProjectInfoEntity projectInfo){
 
@@ -62,6 +67,7 @@ public class MetaController {
      * @param projectInfo
      * @return
      */
+   @ApiOperation("删除项目")
    @PostMapping(value = "/project/delete")
    public R delProject(@RequestBody ProjectInfoEntity projectInfo){
        log.info("This interface delProject Begin: ");
@@ -77,6 +83,7 @@ public class MetaController {
      * @param id
      * @return
      */
+   @ApiOperation("项目查询")
    @GetMapping(value = "/project/query")
    public R findProject(@RequestParam("id") int id){
        log.info("This interface delProject Begin: ");
@@ -88,7 +95,7 @@ public class MetaController {
    }
 
 
-
+   @ApiOperation("项目分页查询")
    @GetMapping(value = "/project/list")
    public R listProject(@RequestParam("current") Integer current,@RequestParam("size") Integer size){
        log.info("This interface listProject Begin: ");
@@ -98,10 +105,6 @@ public class MetaController {
        log.info("This interface updateProject End: executeDeploy cost = "+(endTime-startTime)+"ms");
        return R.ok().put(projectVo);
    }
-
-
-
-    //列出dbInfo (分页)
 
     //创建dbInfo
 }

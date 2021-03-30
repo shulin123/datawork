@@ -10,10 +10,13 @@ import com.shujuelin.datawork.overwirte.entity.HdfsSummaryEntity;
 import com.shujuelin.datawork.overwirte.entity.QueueMetricsEntity;
 import com.shujuelin.datawork.overwirte.entity.YarnSummaryEntity;
 import com.shujuelin.datawork.overwirte.service.MonitorService;
-import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,12 +26,13 @@ import java.util.List;
 @Service
 public class MonitorServiceImpl extends ServiceImpl<HdfsSummaryDao, HdfsSummaryEntity> implements MonitorService {
 
+    private Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     YarnSummaryDao yarnSummaryDao;
     @Autowired
     QueueMetricsDao queueMetricsDao;
 
-
+    private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     /**
      * 增加hdfsSummary信息
      * @param hdfsSummaryEntity
@@ -64,10 +68,10 @@ public class MonitorServiceImpl extends ServiceImpl<HdfsSummaryDao, HdfsSummaryE
      * @return
      */
     @Override
-    public HdfsSummaryEntity findHdfsSummary(int selectTime) {
+    public HdfsSummaryEntity findHdfsSummary(Date selectTime) {
         //mybatis-plus的查询
         QueryWrapper<HdfsSummaryEntity> hdfsSummaryWrapper = new QueryWrapper<>();
-        hdfsSummaryWrapper.eq("create_time",selectTime);
+        hdfsSummaryWrapper.eq("create_time",df.format(selectTime));
         HdfsSummaryEntity hdfsSummaryEntity = baseMapper.selectOne(hdfsSummaryWrapper);
         return hdfsSummaryEntity;
     }
@@ -78,26 +82,15 @@ public class MonitorServiceImpl extends ServiceImpl<HdfsSummaryDao, HdfsSummaryE
      * @return
      */
     @Override
-    public YarnSummaryEntity findYarnSummary(int selectTime) {
+    public YarnSummaryEntity findYarnSummary(Date selectTime) {
         QueryWrapper<YarnSummaryEntity> yarnSummaryWrapper = new QueryWrapper<>();
-        yarnSummaryWrapper.eq("create_time",selectTime);
+        yarnSummaryWrapper.eq("create_time",df.format(selectTime));
+        logger.info(df.format(selectTime));
         YarnSummaryEntity yarnSummaryEntity = yarnSummaryDao.selectOne(yarnSummaryWrapper);
         return yarnSummaryEntity;
     }
 
-    /**
-     * 队列概要详情
-     * @param selectTime
-     * @return
-     */
-    @Override
-    public List<QueueMetricsEntity> findQueueMetrics(int selectTime) {
 
-        QueryWrapper<QueueMetricsEntity> queueMetricsQueryWrapper = new QueryWrapper<>();
-        queueMetricsQueryWrapper.eq("create_time",selectTime);
-        List<QueueMetricsEntity> queueMetricsList  = queueMetricsDao.selectList(queueMetricsQueryWrapper);
-        return queueMetricsList;
-    }
 
     /**
      * 时间段的查询hdfs概要
@@ -106,12 +99,14 @@ public class MonitorServiceImpl extends ServiceImpl<HdfsSummaryDao, HdfsSummaryE
      * @return
      */
     @Override
-    public List<HdfsSummaryEntity> findHdfsSummaryBetween(int startTime, int endTime) {
+    public List<HdfsSummaryEntity> findHdfsSummaryBetween(Long startTime, Long endTime) {
         QueryWrapper<HdfsSummaryEntity> queryWrapperList = new QueryWrapper<>();
         //大于等于
-        queryWrapperList.ge("create_time",startTime);
+        queryWrapperList.ge("create_time",df.format(startTime));
         //小于等于
-        queryWrapperList.le("create_time",endTime);
+        queryWrapperList.le("create_time",df.format(endTime));
+        logger.info("start" +df.format(startTime));
+        logger.info("end" +df.format(endTime));
         List<HdfsSummaryEntity> hdfsSummaryList = baseMapper.selectList(queryWrapperList);
         return hdfsSummaryList;
     }
@@ -123,14 +118,28 @@ public class MonitorServiceImpl extends ServiceImpl<HdfsSummaryDao, HdfsSummaryE
      * @return
      */
     @Override
-    public List<YarnSummaryEntity> findYarnSummaryBetween(int startTime, int endTime) {
+    public List<YarnSummaryEntity> findYarnSummaryBetween(Long startTime, Long endTime) {
         QueryWrapper<YarnSummaryEntity> queryWrapperList = new QueryWrapper<>();
         //大于等于
-        queryWrapperList.ge("create_time",startTime);
+        queryWrapperList.ge("create_time",df.format(startTime));
         //小于等于
-        queryWrapperList.le("create_time",endTime);
+        queryWrapperList.le("create_time",df.format(endTime));
         List<YarnSummaryEntity> yarnSummaryList = yarnSummaryDao.selectList(queryWrapperList);
         return yarnSummaryList;
+    }
+
+    /**
+     * 队列概要详情
+     * @param selectTime
+     * @return
+     */
+    @Override
+    public List<QueueMetricsEntity> findQueueMetrics(Date selectTime) {
+
+        QueryWrapper<QueueMetricsEntity> queueMetricsQueryWrapper = new QueryWrapper<>();
+        queueMetricsQueryWrapper.eq("create_time",df.format(selectTime));
+        List<QueueMetricsEntity> queueMetricsList  = queueMetricsDao.selectList(queueMetricsQueryWrapper);
+        return queueMetricsList;
     }
 
 }
