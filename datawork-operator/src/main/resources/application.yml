@@ -46,7 +46,8 @@ spring:
   application:
     name: datawork-operator
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://192.168.239.128:3306/datawork_operator?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: "123456"
@@ -57,7 +58,7 @@ custom:
       uri: 192.168.239.128:8088
     nn:
       uri: 192.168.239.128:50070
-    conf: /home/jixin/imooc_3/naga/naga-server/src/main/resources
+    conf: F:\gx\datawork\datawork-common\src\main\resources
     proxyuser: root
     hivemetastore: thrift://192.168.239.128:9083
   task:
@@ -73,7 +74,7 @@ custom:
   presto:
     uri: jdbc:presto://47.108.140.82:9090/hive
   hive:
-    uri: jdbc:hive2://47.108.140.82:10000/default
+    uri: jdbc:hive2://192.168.239.128:10000/default
   spark:
     home: /soft/home/spark-2.4.4-bin-hadoop2.7
   redis:

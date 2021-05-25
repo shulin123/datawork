@@ -6,16 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="datawork-operator" />
-        <module name="datawork-overwirte" />
         <module name="datawork-common" />
+        <module name="datawork-system" />
+        <module name="datawork-operator" />
+        <module name="datawork-gateway" />
+        <module name="datawork-taskmanager" />
+        <module name="datawork-overwirte" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="datawork-gateway" options="-parameters" />
       <module name="datawork-operator" options="-parameters" />
       <module name="datawork-overwirte" options="-parameters" />
+      <module name="datawork-system" options="-parameters" />
+      <module name="datawork-taskmanager" options="-parameters" />
     </option>
   </component>
 </project>

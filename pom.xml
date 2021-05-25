@@ -15,6 +15,9 @@
         <module>datawork-overwirte</module>
         <module>datawork-common</module>
         <module>datawork-operator</module>
+        <module>datawork-system</module>
+        <module>datawork-taskmanager</module>
+        <module>datawork-gateway</module>
     </modules>
 
 </project>

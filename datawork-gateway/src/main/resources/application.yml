@@ -1,0 +1,42 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: test_route
+          uri: https://www.baidu.com
+          predicates:
+            - Query=url,baidu
+
+        - id: overwriteroute
+          uri: lb://datawork-overwrite  # 路由给datawork-overwrite
+          predicates:   # 什么情况下路由给它
+            - Path=/datawork/**   # 默认前端项目都带上api前缀，就是我们前面题的localhost:88/api
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
+
+        - id: admin_route
+          uri: lb://renren-fast  # 路由给renren-fast
+          predicates:   # 什么情况下路由给它
+            - Path=/api/**   # 默认前端项目都带上api前缀，就是我们前面题的localhost:88/api
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}  # 把/api/* 改变成 /renren-fast/*
+
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            exposedHeaders:
+              - content-type
+            allowedHeaders:
+              - content-type
+            allowCredentials: true
+            allowedMethods:
+              - GET
+              - OPTIONS
+              - PUT
+              - DELETE
+              - POST
+
+
+
+## 前端项目 都带有api

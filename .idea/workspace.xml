@@ -2,18 +2,65 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abd5edca-9429-4c48-8134-25421553e5f1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/datawork-common/src/main/java/com/shujuelin/datawork/common/entity/utils/FileUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-common/src/main/java/com/shujuelin/datawork/common/entity/utils/JsonUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-common/src/main/java/com/shujuelin/datawork/common/entity/utils/ResultUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-common/src/main/resources/core-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-common/src/main/resources/hdfs-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-overwirte/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-system/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/controller/PluginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/dao/PluginPackageDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/entity/OutParamJpaConverterJson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/entity/PackageOutParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/entity/PackageParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/entity/ParamEntityType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/entity/ParamJpaConverterJson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/entity/ParamType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/entity/PluginCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/entity/PluginPackage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/entity/PluginStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/entity/ProjectInfoEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/feign/ProjectRemoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/plugin/CategoryGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/plugin/JobTypeParamSchemas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/plugin/PackageMetaInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/plugin/PluginPackageParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/service/PluginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/java/com/shujuelin/datawork/taskmanager/service/impl/PluginServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/resources/META-INF/params/command.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/resources/META-INF/params/java.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/resources/META-INF/params/spark-java.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datawork-taskmanager/src/main/resources/META-INF/params/spark-python.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datawork-common/src/main/java/com/shujuelin/datawork/common/entity/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/src/main/java/com/shujuelin/datawork/common/entity/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/BaseEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datawork-operator/src/main/java/com/shujuelin/datawork/operator/config/MybatisPlusConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-operator/src/main/java/com/shujuelin/datawork/operator/config/MybatisPlusConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datawork-operator/src/main/java/com/shujuelin/datawork/operator/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-operator/src/main/java/com/shujuelin/datawork/operator/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/src/main/java/com/shujuelin/datawork/common/entity/constant/constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/src/main/java/com/shujuelin/datawork/common/entity/constant/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/src/main/java/com/shujuelin/datawork/common/entity/utils/HadoopClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/src/main/java/com/shujuelin/datawork/common/entity/utils/HadoopClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/constant/constant.class" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/constant/constant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/utils/CommonCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/utils/CommonCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/utils/HadoopClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/utils/HadoopClient$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/utils/HadoopClient$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/utils/HadoopClient$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/utils/HadoopClient$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/utils/HadoopClient$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/utils/HadoopClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/target/classes/com/shujuelin/datawork/common/entity/utils/HadoopClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/target/datawork-common-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/target/datawork-common-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-operator/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-operator/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datawork-operator/src/main/java/com/shujuelin/datawork/operator/controller/MetaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-operator/src/main/java/com/shujuelin/datawork/operator/controller/MetaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-operator/src/main/java/com/shujuelin/datawork/operator/entity/DbInfoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-operator/src/main/java/com/shujuelin/datawork/operator/entity/DbInfoEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-operator/src/main/java/com/shujuelin/datawork/operator/service/MetaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-operator/src/main/java/com/shujuelin/datawork/operator/service/MetaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-operator/src/main/java/com/shujuelin/datawork/operator/service/impl/MetaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-operator/src/main/java/com/shujuelin/datawork/operator/service/impl/MetaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-operator/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-operator/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/DataworkOverwirteApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/DataworkOverwirteApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/controller/MonitorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/controller/MonitorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/entity/QueueMetricsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/entity/QueueMetricsEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/schedule/HadoopJmxSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/schedule/HadoopJmxSchedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/service/MonitorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/service/MonitorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/service/impl/MonitorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/service/impl/MonitorServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datawork-overwirte/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-overwirte/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datawork-overwirte/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/datawork-overwirte/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +69,9 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="datawork" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -53,7 +103,6 @@
   <component name="ProjectId" id="1oL870ccBbA8THmigZ7be0L1sSV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
-    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -66,7 +115,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/datawork-operator/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/datawork-gateway/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -76,25 +125,68 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17338331" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="service.view.auto.scroll.from.source" value="true" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.shujuelin.datawork.overwirte.config" />
-      <recent name="com.shujuelin.datawork.common.entity.utils" />
+      <recent name="com.shujuelin.datawork.gateway.config" />
+      <recent name="com.shujuelin.datawork.taskmanager.entity" />
       <recent name="com.shujuelin.datawork.common.entity.exception" />
-      <recent name="com.shujuelin.datawork.overwirte.service.impl" />
-      <recent name="com.shujuelin.datawork.overwirte.service" />
+      <recent name="com.shujuelin.datawork.common.entity.utils" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\gx\datawork\datawork-operator\src\main\resources" />
-      <recent name="F:\gx\datawork\datawork-overwirte\src\main\resources" />
-      <recent name="F:\gx\datawork\datawork-overwirte\src\main\java\com\shujuelin\datawork\overwirte" />
-      <recent name="F:\gx\datawork\datawork-overwirte\src\main\java\com\shujuelin\datawork\overwirte\dao" />
-      <recent name="F:\gx\datawork\datawork-overwirte\src\main\java\com\shujuelin\datawork\overwirte\entity" />
+      <recent name="F:\gx\datawork\datawork-gateway\src\main\resources" />
+      <recent name="F:\gx\datawork\datawork-common\src\main\java\com\shujuelin\datawork\common\entity\utils" />
+      <recent name="F:\gx\datawork\datawork-taskmanager\src\main\java\com\shujuelin\datawork\taskmanager\plugin" />
+      <recent name="F:\gx\datawork\datawork-taskmanager\src\main\java\com\shujuelin\datawork\taskmanager\service\impl" />
+      <recent name="F:\gx\datawork\datawork-taskmanager\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.DataworkOverwirteApplication">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="excludedTypes">
+      <set>
+        <option value="#com.intellij.j2ee.web.jsr45.JSR45ConfigurationFactory" />
+        <option value="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" />
+        <option value="GlassfishConfiguration" />
+        <option value="GoogleAppEngineDevServer" />
+        <option value="JBossConfiguration" />
+        <option value="JettyConfiguration" />
+        <option value="ResinConfigurationType" />
+        <option value="TomeeConfiguration" />
+        <option value="WebLogic Instance" />
+        <option value="WebSphereRunConfigurationType" />
+        <option value="com.intellij.dmserver.run.DMServerRunConfigurationType:id" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.DataworkOperatorApplication">
+    <configuration name="HadoopClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.shujuelin.datawork.common.entity.utils.HadoopClient" />
+      <module name="datawork-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shujuelin.datawork.common.entity.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataworkGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="datawork-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shujuelin.datawork.gateway.DataworkGatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DataworkOperatorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="datawork-operator" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.shujuelin.datawork.operator.DataworkOperatorApplication" />
@@ -109,15 +201,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DataworkSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="datawork-system" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shujuelin.datawork.system.DataworkSystemApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataworkTaskmanagerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="datawork-taskmanager" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shujuelin.datawork.taskmanager.DataworkTaskmanagerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.HadoopClient" />
+      <item itemvalue="Spring Boot.DataworkGatewayApplication" />
+      <item itemvalue="Spring Boot.DataworkOperatorApplication" />
+      <item itemvalue="Spring Boot.DataworkOverwirteApplication" />
+      <item itemvalue="Spring Boot.DataworkSystemApplication" />
+      <item itemvalue="Spring Boot.DataworkTaskmanagerApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.HadoopClient" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
         <serviceView>
+          <option name="contentProportion" value="0.26297814" />
           <treeState>
             <expand />
             <select />
           </treeState>
+          <option name="groupByContributor" value="true" />
         </serviceView>
       </list>
     </option>
@@ -188,7 +309,43 @@
       <workItem from="1616549709872" duration="443000" />
       <workItem from="1616576825257" duration="183000" />
       <workItem from="1617008143714" duration="533000" />
-      <workItem from="1617085970600" duration="1562000" />
+      <workItem from="1617085970600" duration="1853000" />
+      <workItem from="1617090372714" duration="859000" />
+      <workItem from="1617155050974" duration="192000" />
+      <workItem from="1617246922736" duration="14000" />
+      <workItem from="1617259602743" duration="145000" />
+      <workItem from="1617344286850" duration="692000" />
+      <workItem from="1618038610048" duration="1238000" />
+      <workItem from="1618042383311" duration="12000" />
+      <workItem from="1618130908871" duration="1110000" />
+      <workItem from="1618277539836" duration="108000" />
+      <workItem from="1618562717412" duration="1238000" />
+      <workItem from="1618574973384" duration="6148000" />
+      <workItem from="1618794898891" duration="7334000" />
+      <workItem from="1618802859434" duration="13755000" />
+      <workItem from="1618819496110" duration="582000" />
+      <workItem from="1618820247367" duration="4617000" />
+      <workItem from="1618886531042" duration="12724000" />
+      <workItem from="1618967301520" duration="6609000" />
+      <workItem from="1620372657642" duration="25000" />
+      <workItem from="1620374737995" duration="1373000" />
+      <workItem from="1620377586867" duration="1588000" />
+      <workItem from="1620379735514" duration="1391000" />
+      <workItem from="1620390031409" duration="388000" />
+      <workItem from="1620390739670" duration="676000" />
+      <workItem from="1620391914120" duration="118000" />
+      <workItem from="1620392542421" duration="1655000" />
+      <workItem from="1620395369229" duration="249000" />
+      <workItem from="1620613874412" duration="15000" />
+      <workItem from="1620615486205" duration="5000" />
+      <workItem from="1620625396342" duration="254000" />
+      <workItem from="1620884347393" duration="2731000" />
+      <workItem from="1620887320959" duration="15459000" />
+      <workItem from="1620954551345" duration="177000" />
+      <workItem from="1620971215999" duration="1390000" />
+      <workItem from="1620973154439" duration="973000" />
+      <workItem from="1621063243542" duration="163000" />
+      <workItem from="1621070186073" duration="1048000" />
     </task>
     <servers />
   </component>
@@ -196,81 +353,120 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1615559942326">
+    <state x="469" y="89" key="#HadoopClient" timestamp="1620888535562">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1615559942326" />
+    <state x="469" y="89" key="#HadoopClient/0.0.1536.824@0.0.1536.824" timestamp="1620888535562" />
+    <state x="223" y="70" width="1155" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620888632844">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="70" width="1155" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1620888632844" />
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1618968345087">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1618968345087" />
     <state x="450" y="340" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1614939179184">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="450" y="340" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1614939179184" />
+    <state x="61" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1618970023910">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="61" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1618970023910" />
     <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1614939146356">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1614939146356" />
-    <state width="1493" height="118" key="GridCell.Tab.0.bottom" timestamp="1616083103788">
+    <state x="524" y="120" key="#xdebugger.evaluate" timestamp="1618797292560">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="118" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616083103788" />
-    <state width="1493" height="118" key="GridCell.Tab.0.center" timestamp="1616083103788">
+    <state x="524" y="120" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1618797292560" />
+    <state width="1078" height="192" key="GridCell.Tab.0.bottom" timestamp="1620915904295">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="118" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1616083103788" />
-    <state width="1493" height="118" key="GridCell.Tab.0.left" timestamp="1616083103788">
+    <state width="1078" height="192" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620915904295" />
+    <state width="1078" height="192" key="GridCell.Tab.0.center" timestamp="1620915904295">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="118" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1616083103788" />
-    <state width="1493" height="118" key="GridCell.Tab.0.right" timestamp="1616083103788">
+    <state width="1078" height="192" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1620915904295" />
+    <state width="1078" height="192" key="GridCell.Tab.0.left" timestamp="1620915904295">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="118" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1616083103788" />
-    <state width="1493" height="118" key="GridCell.Tab.1.bottom" timestamp="1616083103788">
+    <state width="1078" height="192" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1620915904295" />
+    <state width="1078" height="192" key="GridCell.Tab.0.right" timestamp="1620915904295">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="118" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616083103788" />
-    <state width="1493" height="118" key="GridCell.Tab.1.center" timestamp="1616083103788">
+    <state width="1078" height="192" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1620915904295" />
+    <state width="1078" height="192" key="GridCell.Tab.1.bottom" timestamp="1620915904296">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="118" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1616083103788" />
-    <state width="1493" height="118" key="GridCell.Tab.1.left" timestamp="1616083103788">
+    <state width="1078" height="192" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620915904296" />
+    <state width="1078" height="192" key="GridCell.Tab.1.center" timestamp="1620915904296">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="118" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1616083103788" />
-    <state width="1493" height="118" key="GridCell.Tab.1.right" timestamp="1616083103788">
+    <state width="1078" height="192" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1620915904296" />
+    <state width="1078" height="192" key="GridCell.Tab.1.left" timestamp="1620915904295">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="118" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1616083103788" />
-    <state width="1493" height="229" key="GridCell.Tab.2.bottom" timestamp="1616061890487">
+    <state width="1078" height="192" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1620915904295" />
+    <state width="1078" height="192" key="GridCell.Tab.1.right" timestamp="1620915904296">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616061890487" />
-    <state width="1493" height="229" key="GridCell.Tab.2.center" timestamp="1616061890487">
+    <state width="1078" height="192" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1620915904296" />
+    <state width="1078" height="384" key="GridCell.Tab.2.bottom" timestamp="1620897552999">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1616061890487" />
-    <state width="1493" height="229" key="GridCell.Tab.2.left" timestamp="1616061890487">
+    <state width="1078" height="384" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620897552999" />
+    <state width="1078" height="384" key="GridCell.Tab.2.center" timestamp="1620897552999">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1616061890487" />
-    <state width="1493" height="229" key="GridCell.Tab.2.right" timestamp="1616061890487">
+    <state width="1078" height="384" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1620897552999" />
+    <state width="1078" height="384" key="GridCell.Tab.2.left" timestamp="1620897552999">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="229" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1616061890487" />
-    <state x="299" y="70" key="Maven.ArtifactSearchDialog" timestamp="1615022033209">
+    <state width="1078" height="384" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1620897552999" />
+    <state width="1078" height="384" key="GridCell.Tab.2.right" timestamp="1620897552999">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="299" y="70" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1615022033209" />
+    <state width="1078" height="384" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1620897552999" />
+    <state x="299" y="70" key="Maven.ArtifactSearchDialog" timestamp="1618821964180">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="299" y="70" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1618821964180" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1613209082870">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1613209082870" />
-    <state x="178" y="116" key="new project wizard" timestamp="1616495403677">
+    <state x="565" y="193" key="chooseDestDirectoryDialog" timestamp="1618811833055">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="178" y="116" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1616495403677" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1615701196234">
+    <state x="565" y="193" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1618811833055" />
+    <state x="457" y="167" width="644" height="490" key="find.popup" timestamp="1618798551272">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1615701196234" />
+    <state x="457" y="167" width="644" height="490" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1618798551272" />
+    <state x="178" y="116" key="new project wizard" timestamp="1620886131036">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="116" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1620886131036" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1620897430751">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1620897430751" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1620888032779">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1620888032779" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/datawork-overwirte/src/main/java/com/shujuelin/datawork/overwirte/schedule/HadoopJmxSchedule.java</url>
+          <line>179</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

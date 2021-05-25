@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.239.128:8848
+  application:
+    name: datawork-overwrite
+
+
+
+#配置中心

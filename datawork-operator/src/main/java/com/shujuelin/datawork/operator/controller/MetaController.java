@@ -2,6 +2,7 @@ package com.shujuelin.datawork.operator.controller;
 
 import com.shujuelin.datawork.common.entity.utils.R;
 import com.shujuelin.datawork.operator.Vo.ProjectVo;
+import com.shujuelin.datawork.operator.entity.DbInfoEntity;
 import com.shujuelin.datawork.operator.entity.ProjectInfoEntity;
 import com.shujuelin.datawork.operator.service.MetaService;
 import com.shujuelin.datawork.operator.service.impl.MetaServiceImpl;
@@ -94,6 +95,17 @@ public class MetaController {
        return R.ok().put(projectInfo);
    }
 
+   @ApiOperation("通过项目名称查询project")
+   @GetMapping(value = "/project/querybyname")
+   public R findProjectByName(@RequestParam("projectname") String projectname){
+       log.info("This interface delProject Begin: ");
+       long startTime = System.currentTimeMillis();
+       ProjectInfoEntity projectInfo = metaService.findProjectInfo(projectname);
+       long endTime = System.currentTimeMillis();
+       log.info("This interface updateProject End: executeDeploy cost = "+(endTime-startTime)+"ms");
+       return R.ok().put(projectInfo);
+   }
+
 
    @ApiOperation("项目分页查询")
    @GetMapping(value = "/project/list")
@@ -107,4 +119,12 @@ public class MetaController {
    }
 
     //创建dbInfo
+
+    @ApiOperation("创建db数据库")
+    @PostMapping(value = "/db/add")
+    public R createDb(@RequestBody DbInfoEntity dbInfoEntity){
+        log.info("This interface DbInfoEntity Begin: ");
+        int uuid = metaService.createDbInfoEntity(dbInfoEntity);
+        return R.ok().put(uuid);
+    }
 }

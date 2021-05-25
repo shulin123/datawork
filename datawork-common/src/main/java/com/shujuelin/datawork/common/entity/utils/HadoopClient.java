@@ -16,6 +16,7 @@ import org.apache.hadoop.security.UserGroupInformation;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URL;
 import java.security.PrivilegedAction;
 import java.security.PrivilegedExceptionAction;
 import java.util.Arrays;
@@ -199,9 +200,11 @@ public class HadoopClient {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        HadoopClient hadoopClient = new HadoopClient("hadoop","/home/jixin/imooc_3/naga/naga-server/src/main/resources","thrift://47.108.140.82:9083");
 
-        FileSystem fileSystem = hadoopClient.getFileSystem(null, "hdfs://47.108.140.82:9000");
+        HadoopClient hadoopClient = new HadoopClient("root","F:\\gx\\datawork\\datawork-common\\src\\main\\resources","thrift://192.168.239.128:9083");
+
+        //拿到hdfs上的所有目录
+        FileSystem fileSystem = hadoopClient.getFileSystem(null, "hdfs://192.168.239.128:8020");
         FileStatus[] fileStatuses = fileSystem.listStatus(new Path("/"));
         Arrays.stream(fileStatuses).forEach(fileStatus -> {
             System.out.println(fileStatus.getPath().getName());

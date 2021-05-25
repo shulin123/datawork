@@ -1,5 +1,6 @@
 package com.shujuelin.datawork.operator.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.shujuelin.datawork.common.entity.BaseEntity;
@@ -18,7 +19,7 @@ public class DbInfoEntity extends BaseEntity {
 
     private static final long    serialVersionUID = 1L;
 
-    @TableId
+    @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
     private String name;
     private String detail;
@@ -29,7 +30,7 @@ public class DbInfoEntity extends BaseEntity {
     //业务线的名称
     private String projectName;
     //项目id
-    private Long projectId;
+    private Integer projectId;
     private String admin;
     private String team;
 }

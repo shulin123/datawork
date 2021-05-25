@@ -1,6 +1,13 @@
 com\shujuelin\datawork\common\entity\BaseEntity.class
-com\shujuelin\datawork\common\entity\exception\DataWorkException.class
-com\shujuelin\datawork\common\entity\controller\BaseController.class
 com\shujuelin\datawork\common\entity\utils\R.class
+com\shujuelin\datawork\common\entity\constant\Constant.class
+com\shujuelin\datawork\common\entity\utils\CommonCode.class
+com\shujuelin\datawork\common\entity\utils\HadoopClient$3.class
+com\shujuelin\datawork\common\entity\exception\DataWorkException.class
+com\shujuelin\datawork\common\entity\utils\HadoopClient$2.class
+com\shujuelin\datawork\common\entity\controller\BaseController.class
+com\shujuelin\datawork\common\entity\utils\HadoopClient.class
+com\shujuelin\datawork\common\entity\utils\ResultCode.class
 com\shujuelin\datawork\common\entity\utils\StatefulHttpClient.class
+com\shujuelin\datawork\common\entity\utils\HadoopClient$1.class
 com\shujuelin\datawork\common\entity\exception\ErrorCode.class

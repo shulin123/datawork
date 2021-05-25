@@ -1,11 +1,14 @@
 package com.shujuelin.datawork.operator.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.shujuelin.datawork.common.entity.exception.DataWorkException;
+import com.shujuelin.datawork.common.entity.exception.ErrorCode;
 import com.shujuelin.datawork.common.entity.utils.CommonCode;
 import com.shujuelin.datawork.common.entity.utils.HadoopClient;
+import com.shujuelin.datawork.common.entity.utils.R;
 import com.shujuelin.datawork.operator.Vo.ProjectVo;
 import com.shujuelin.datawork.operator.dao.DataSourceDao;
 import com.shujuelin.datawork.operator.dao.DbInfoDao;
@@ -23,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -37,15 +39,17 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
 
     @Value("${custom.hadoop.proxyuser}")
     private String proxyUser;
-    @Value("$custom.hadoop.conf")
+    @Value("${custom.hadoop.conf}")
     private String hadoopConfPath;
-    @Value("$custom.hadoop.hivemetastore")
+    @Value("${custom.hadoop.hivemetastore}")
     private String hiveMemetaStore;
 
     @Autowired
     DbInfoDao dbInfoDao;
     @Autowired
     DataSourceDao dataSourceDao;
+    @Autowired
+    MetaService metaService;
 
     /**
      * 创建项目
@@ -53,6 +57,11 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
      */
     @Override
     public Integer  createProjectInfoEntity(ProjectInfoEntity projectInfo) {
+        String projectName = projectInfo.getName();
+        ProjectInfoEntity projectInfoEntity = findProjectInfo(projectName);
+        if (projectInfoEntity != null){
+            throw new DataWorkException("项目名称已经存在 !",CommonCode.SERVER_ERROR.code(),null);
+        }
         //创建hdfs目录
         String hdfsUri = String.format("hdfs://%s", projectInfo.getNs());
         HadoopClient hadoopClient = new HadoopClient(proxyUser, hadoopConfPath, hiveMemetaStore);
@@ -74,6 +83,8 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
         }
         return projectInfo.getId();
     }
+
+
 
     /**
      * 更新项目
@@ -131,6 +142,20 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
     }
 
     /**
+     * 根据项目名称查询
+     * @param projectName
+     * @return
+     */
+    @Override
+    public ProjectInfoEntity findProjectInfo(String projectName) {
+        QueryWrapper<ProjectInfoEntity> wrapper = new QueryWrapper<>();
+        wrapper.eq("name",projectName);
+        ProjectInfoEntity projectInfoEntity = baseMapper.selectOne(wrapper);
+        return projectInfoEntity;
+    }
+
+
+    /**
      * 分页查询
      *参数一是当前页，参数二是每页个数
      * @param current
@@ -151,15 +176,36 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
 
     }
 
-
     /**
      * 新增db
      * @param dbInfoEntity
      */
     @Override
-    public void createDbInfoEntity(DbInfoEntity dbInfoEntity) {
-      //创建hive databases
-        dbInfoDao.insert(dbInfoEntity);
+    public Integer createDbInfoEntity(DbInfoEntity dbInfoEntity) {
+
+        String dbName = dbInfoEntity.getName();
+        DbInfoEntity dbInfo = findDbInfoEntityByName(dbName);
+        if (dbInfo != null){
+            throw new DataWorkException("数据库名已经存在 ！",ErrorCode.ERROR_PARAM,null);
+        }
+        HadoopClient hadoopClient = new HadoopClient(proxyUser, hadoopConfPath, hiveMemetaStore);
+        String projectName = dbInfoEntity.getProjectName();
+        if (projectName == null){
+            throw new DataWorkException("项目不存在 ！",ErrorCode.ERROR_PARAM,null);
+        }
+        ProjectInfoEntity projectInfoEntity = metaService.findProjectInfo(projectName);
+        dbInfoEntity.setProjectId(projectInfoEntity.getId());
+        dbInfoEntity.setLocationUri(projectInfoEntity.getBasePath() + "/warehouse/" +
+                dbInfoEntity.getLevel() + "/" + dbInfoEntity.getName() + ".db");
+        try {
+            dbInfoDao.insert(dbInfoEntity);
+            //创建hive的数据库
+            hadoopClient.createDataBase(dbInfoEntity.getName(),dbInfoEntity.getLocationUri(),dbInfoEntity.getDetail()
+                    ,dbInfoEntity.getTeam());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return dbInfoEntity.getId();
     }
 
     /**
@@ -186,9 +232,20 @@ public class MetaServiceImpl extends ServiceImpl<ProjectInfoDao, ProjectInfoEnti
         return null;
     }
 
+    /**
+     * 根据名称查询hive数据库信息
+     * @param name
+     * @return
+     */
     @Override
     public DbInfoEntity findDbInfoEntityByName(String name) {
-        return null;
+        if (name == null){
+            return null;
+        }
+        QueryWrapper<DbInfoEntity> entityQueryWrapper = new QueryWrapper<>();
+        entityQueryWrapper.eq("name",name);
+        DbInfoEntity dbInfoEntity = dbInfoDao.selectOne(entityQueryWrapper);
+        return dbInfoEntity;
     }
 
     @Override

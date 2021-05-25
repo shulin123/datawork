@@ -7,6 +7,9 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/datawork-overwirte/pom.xml" />
         <option value="$PROJECT_DIR$/datawork-operator/pom.xml" />
+        <option value="$PROJECT_DIR$/datawork-system/pom.xml" />
+        <option value="$PROJECT_DIR$/datawork-taskmanager/pom.xml" />
+        <option value="$PROJECT_DIR$/datawork-gateway/pom.xml" />
       </list>
     </option>
   </component>

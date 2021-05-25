@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  * @date : 22:01 2021/2/12
  */
 @RestController
-@RequestMapping("datawork/v1/monitor")
+@RequestMapping("monitor")
 @Api("大数据平台之数据概览")
 //跨域
 @CrossOrigin

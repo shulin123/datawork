@@ -27,12 +27,14 @@ public interface MetaService {
     //查询ProjectInfoEntity详情
     ProjectInfoEntity findProjectInfoEntityById(long id);
 
+    //查询查询ProjectInfoEntity详情 通过项目名称
+    ProjectInfoEntity findProjectInfo(String projectName);
 
 
     //分页查询
     ProjectVo queryListProject(Integer current, Integer size);
 
-    void createDbInfoEntity(DbInfoEntity dbInfoEntity);
+    Integer createDbInfoEntity(DbInfoEntity dbInfoEntity);
 
     void updateDbInfoEntity(DbInfoEntity dbInfoEntity);
 
@@ -68,5 +70,5 @@ public interface MetaService {
     List<DataSourceEntity> findDataSourceByProjectId(long id);
 
    // Page<DataSourceEntity> listDataSources(String team, int page, int size, String sort, Sort.Direction direction);
-    
+
 }
