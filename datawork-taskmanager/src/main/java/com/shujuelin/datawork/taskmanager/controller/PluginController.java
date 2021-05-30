@@ -37,14 +37,13 @@ public class PluginController {
     ProjectRemoteService projectRemoteService;
 
     @ResponseBody
-    @PostMapping("plugin")
+    @PostMapping(value = "plugin")
     @ApiOperation("上传插件")
-    @CrossOrigin(value = "*",allowedHeaders="*",allowCredentials="true",maxAge = 10000)
     public Object uploadPlugin(@RequestParam("pkgName") String pkgName,
                                @RequestParam("pkgVersion") String pkgVersion,
                                @RequestParam(value = "status", defaultValue = "Dev") PluginStatus status,
-                               @RequestParam(value = "description", defaultValue = "") String description,
-                               @RequestParam(value = "tags", defaultValue = "") String tags,
+                               @RequestParam(value = "description",required=false, defaultValue = "") String description,
+                               @RequestParam(value = "tags",required=false, defaultValue = "") String tags,
                                @RequestParam("category") PluginCategory category,
                                @RequestParam("projectName") String projectName,
                                @RequestParam("file") MultipartFile file) {

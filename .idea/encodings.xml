@@ -10,5 +10,6 @@
     <file url="file://$PROJECT_DIR$/datawork-overwirte/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/datawork-system/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/datawork-taskmanager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/datawork-taskmanager/src/main/resources/application.yml" charset="UTF-8" />
   </component>
 </project>

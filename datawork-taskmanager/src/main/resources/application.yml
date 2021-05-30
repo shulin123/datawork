@@ -1,0 +1,50 @@
+server:
+  port: 9044
+
+logging:
+  level:
+    root: INFO
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  typeAliasesPackage: com.cetc.dwp.entity
+  global-config:
+    id-type: 0
+    field-strategy: 2
+    db-column-underline: true
+    refresh-mapper: true
+    logic-delete-value: -1
+    logic-not-delete-value: 0
+
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  http:
+    multipart:
+      enabled=false:
+  application:
+    name: datawork-taskmanager
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.239.128:8848
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.239.128:3306/datawork_taskmanager?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: "123456"
+
+custom:
+  task:
+    packageDir: /home/

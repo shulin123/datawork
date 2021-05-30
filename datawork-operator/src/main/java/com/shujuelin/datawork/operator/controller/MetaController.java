@@ -97,10 +97,10 @@ public class MetaController {
 
    @ApiOperation("通过项目名称查询project")
    @GetMapping(value = "/project/querybyname")
-   public R findProjectByName(@RequestParam("projectname") String projectname){
+   public R findProjectByName(@RequestParam("projectName") String projectName){
        log.info("This interface delProject Begin: ");
        long startTime = System.currentTimeMillis();
-       ProjectInfoEntity projectInfo = metaService.findProjectInfo(projectname);
+       ProjectInfoEntity projectInfo = metaService.findProjectInfo(projectName);
        long endTime = System.currentTimeMillis();
        log.info("This interface updateProject End: executeDeploy cost = "+(endTime-startTime)+"ms");
        return R.ok().put(projectInfo);

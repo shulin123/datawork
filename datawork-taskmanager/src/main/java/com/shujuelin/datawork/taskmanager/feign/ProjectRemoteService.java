@@ -4,6 +4,7 @@ import com.shujuelin.datawork.common.entity.utils.R;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author : shujuelin
@@ -16,5 +17,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Component
 public interface ProjectRemoteService {
     @GetMapping(value = "datawork/v1/Meta/project/querybyname")
-    R findProjectByName(String projectName);
+    R findProjectByName(@RequestParam("projectName") String projectName);
 }

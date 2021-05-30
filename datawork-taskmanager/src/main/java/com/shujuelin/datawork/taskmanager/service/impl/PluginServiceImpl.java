@@ -163,7 +163,7 @@ public class PluginServiceImpl extends ServiceImpl<PluginPackageDao,PluginPackag
     @Override
     public void update(PluginPackage pluginPackage) {
 
-       // pluginPackageDao.save(pluginPackage);
+       pluginPackageDao.insert(pluginPackage);
     }
 
     private void removePluginFile(String name, String version) throws IOException {
